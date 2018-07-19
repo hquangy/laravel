@@ -1,0 +1,65 @@
+.env
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=quangcms
+	DB_USERNAME=root
+	DB_PASSWORD=
+
+	TIME_ZONE=Asia/Ho_Chi_Minh
+
+config/app.php
+	'timezone' => env('TIME_ZONE','UTC'),
+AppServiceProvider
+	use Illuminate\Support\Facades\Schema;
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+
+cli
+	php artisan make:auth
+	php artisan migrate
+	npm install
+
+php artisan tinker
+
+	$user = new App\User;
+	$user->name = "quang";
+	$user->email = "admin@gmail.com";
+	$user->password = bcrypt('20108624');
+	$user->save();
+
+helper
+	function setActive($path)
+	{
+	    return Request::is($path . '*') ? ' class=active' :  '';
+	}
+
+	function checkRoute($path)
+	{
+		return Request::is($path . '*') ? true :  false;
+	}
+
+	function word_limit($string,$length=10,$extension = '...')
+	{
+		return \Illuminate\Support\Str::words($string, $length,$extension);
+	}
+
+	function word_limit_striptag($string,$length=10,$extension = '...')
+	{
+		return \Illuminate\Support\Str::words(strip_tags($string,'<p></p>'), $length,$extension);
+	}
+
+composer.json
+	"autoload": {
+	    "classmap": [
+	        "database"
+	    ],
+	    "psr-4": {
+	        "App\\": "app/"
+	    },
+	    "files": [
+	        "app/Helper/helpers.php"
+	    ]
+	},

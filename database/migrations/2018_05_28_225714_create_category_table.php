@@ -1,0 +1,60 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateCategoryTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('parent_id')->unsigned()->nullable();
+            $table->integer('ancestor_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+
+            $table->integer('boost')->unsigned()->nullable();
+            $table->integer('order')->unsigned()->nullable();
+            $table->integer('visibility')->unsigned()->nullable()->default(1);
+            $table->integer('direction')->unsigned()->nullable()->default(1);
+
+            $table->string('title')->nullable();
+            $table->string('en_title')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('subtitle')->nullable();
+            $table->string('layout')->nullable();
+
+            $table->text('description')->nullable();
+            $table->text('short_description')->nullable();
+            $table->text('content')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('filename')->nullable();
+
+            $table->string('face_title')->nullable();
+            $table->text('face_description')->nullable();
+            $table->text('face_image')->nullable();
+
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->index(['id','title','slug']);
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('categories');
+    }
+}
