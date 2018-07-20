@@ -11,7 +11,7 @@ use DB;
 class Offer extends Model
 {
 	use SoftDeletes;
-
+    protected $table = 'offers';
 	protected $fillable = [
 		'order',
 		'boost',

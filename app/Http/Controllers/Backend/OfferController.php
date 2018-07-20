@@ -50,7 +50,7 @@ class OfferController extends Controller
     {
         $this->model = new Offer();
         $this->updateValidate = $this->storeValidate;
-        $this->updateValidate['filename']='nullable';
+        $this->updateValidate['filename'] = 'nullable';
 
         $this->middleware(function ($request, $next) {
             view()->share('title', $this->title);
