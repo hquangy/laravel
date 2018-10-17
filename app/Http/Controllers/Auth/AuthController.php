@@ -56,6 +56,7 @@ class AuthController extends Controller
             return redirect()->route('backend.dashboard.index');
         }
 
+        // login user
     	if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_ban' => null], $remember)) {
             return redirect()->intended(route('backend.dashboard.index'));
     	}

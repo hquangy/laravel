@@ -1,5 +1,5 @@
 <?php
-namespace App\Helper;
+namespace App\Trait;
 use Validator;
 
 trait DataViewer {

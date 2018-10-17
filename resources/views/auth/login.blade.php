@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cơm tấm Cali</title>
+    <title>{{ config('common.be_title') }}</title>
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -16,7 +16,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/')}}"><b>Cơm tấm</b> Cali</a>
+        <a href="{{ url('/')}}">{{ config('common.be_title') }}</a>
     </div>
     <div class="login-box-body">
         <p class="login-box-msg">Đăng nhập vào hệ thống BE</p>

@@ -1,4 +1,9 @@
 <?php
+# Test
+Route::group(['namespace' => 'Test', 'as' => 'test.', 'prefix'=>'test'], function () {
+	Route::get('curlLargeFile', 'CurlController@index');
+});
+
 # Frontend
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
 	Route::get('vi', 'RedirectController@home');

@@ -4,9 +4,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Trang quản lý</title>
-  <script>
-    var baseURL = '{{ url('/')}}';
-  </script>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -26,12 +23,17 @@
   {{-- <link rel="stylesheet" href="/backend/admin/bower_components/jvectormap/jquery-jvectormap.css"> --}}
   {{-- Date Picker --}}
   {{-- <link rel="stylesheet" href="/backend/admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> --}}
+
   <!-- Daterange picker -->
-  {{-- <link rel="stylesheet" href="/backend/admin/bower_components/bootstrap-daterangepicker/daterangepicker.css"> --}}
+  <link rel="stylesheet" href="/backend/admin/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
   <!-- bootstrap wysihtml5 - text editor -->
   {{-- <link rel="stylesheet" href="/backend/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> --}}
   <link rel="stylesheet" href="/plugins/selectize/css/selectize.bootstrap3.css">
+
+  {{-- admin custom css --}}
   <link rel="stylesheet" href="/backend/css/admin.css">
+
   <!-- jQuery 3 -->
   <script src="/backend/admin/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/plugins/selectize/selectize.min.js"></script>
@@ -99,9 +101,11 @@
 <script src="/backend/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> --}}
 {{-- jQuery Knob Chart --}}
 {{-- <script src="/backend/admin/bower_components/jquery-knob/dist/jquery.knob.min.js"></script> --}}
+
 {{-- daterangepicker --}}
-{{-- <script src="/backend/admin/bower_components/moment/min/moment.min.js"></script>
-<script src="/backend/admin/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script> --}}
+<script src="/backend/admin/bower_components/moment/min/moment.min.js"></script>
+<script src="/backend/admin/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
 {{-- datepicker --}}
 {{-- <script src="/backend/admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> --}}
 {{-- Bootstrap WYSIHTML5 --}}
@@ -116,8 +120,9 @@
 {{-- <script src="/backend/admin/dist/js/pages/dashboard.js"></script> --}}
 {{-- AdminLTE for demo purposes --}}
 {{-- <script src="/backend/admin/dist/js/demo.js"></script> --}}
-{{-- admin --}}
-<script src="/js/admin.js"></script>
+
+{{-- admin custom js --}}
+<script src="/backend/js/admin.js"></script>
 @yield('script')
 </body>
 </html>

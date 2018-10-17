@@ -11,45 +11,138 @@ use App\Services\ExcelSupport;
 
 class ProductController extends Controller
 {
-	protected $fields = [
-	    'title' => '',
-	    'en_title' => '',
-	    'slug' => '',
-	    'order'=> '',
-	    'boost'=> '',
-	    'visibility'=> '',
-	    'short_description'=> '',
-	    'filename'=> '',
-	    'description'=> '',
-	    // 'content'=> '',
-	    'facebook_title'=> '',
-	    'facebook_description'=> '',
-	    'meta_title'=> '',
-	    'meta_description'=> '',
-	    'category_id' => '',
-	];
+    // model
+    private $Product;
 
-    protected $message_errors = [
-        'title.required' => 'Tựa đề không được để trống',
-        'title.min' => 'Tựa đề trên :min ký tự',
-        'en_title.required' => 'Tựa đề (en) không được để trống',
-        'en_title.min' => 'Tựa đề (en) trên :min ký tự',
-        'slug.required' => 'Slug không được để trống',
-        'slug.min' => 'Slug trên :min ký tự',
-        'slug.unique' => 'Slug đã tồn tại',
-        'short_description.required' => 'Mô tả ngắn không được để trống',
-        'short_description.min' => 'Mô tả ngắn trên :min ký tự',
-        'short_description.min' => 'Mô tả ngắn không quá :max ký tự',
-        'content.required' => 'Mô tả không được để trống',
-        'content.min' => 'Mô tả trên :min ký tự',
+    // variables common
+    protected $title = 'Sản phẩm';
+    protected $view = 'backend.product.';
+    protected $route = 'backend.product.';
+
+    protected $operators = [
+        'like' => 'LIKE',
+        'equal' => '=',
+        'not_equal' => '<>',
+        'less_than' => '<',
+        'greater_than' => '>',
+        'less_than_or_equal_to' => '<=',
+        'greater_than_or_equal_to' => '>=',
+        'in' => 'IN',
     ];
+
+    // data
+    protected $data = [
+        'id' => [
+            'col_table' => 1,
+            'desc' => 'ID',
+            'col_order' => true,
+            'col_filter' => 1,
+        ],
+
+        'title' => [
+            'col_table' => 2,
+            'desc' => 'Tên',
+            'col_filter_select' => true,
+            'col_order' => true,
+            'col_filter' => 2,
+        ],
+
+        'order' => [
+            'col_table' => 3,
+            'desc' => 'Thứ tự',
+            'col_order' => true,
+            'col_filter' => 3,
+        ],
+
+        'visibility' => [
+            'col_table' => 4,
+            'desc' => 'Ẩn/Hiện',
+            'col_order' => true,
+        ],
+
+        'slug' => [
+            'col_table' => 5,
+            'desc' => 'Slug',
+            'col_order' => true,
+            'col_filter' => 5,
+        ],
+
+        'short_description' => [
+            'col_table' => 6,
+            'desc' => 'Mô tả ngắn',
+            'col_order' => true,
+            'col_filter' => 6,
+        ],
+
+        'filename' => [
+            'col_table' => 7,
+            'desc' => 'Hình chính',
+            'col_filter' => 7,
+        ],
+
+        'created_at' => [
+            'desc' => 'Ngày tạo',
+            'time' => true,
+        ],
+    ];
+
+    public function __construct()
+    {
+        // model contructor
+        $this->Product = new Product();
+
+        $this->middleware(function ($request, $next) {
+            view()->share('title', $this->title);
+            view()->share('view', $this->view);
+            view()->share('route', $this->route);
+            view()->share('data', $this->data);
+            view()->share('operators', $this->operators);
+            return $next($request);
+        });
+    }
 
     public function index()
     {
-    	$products = Product::with('category')
-        ->orderBy('id','desc')
-        ->get();
-    	return view('backend.product.index',compact('products'));
+        $request = request();
+        $items = $this->filter('Product', $request);
+
+        if($request->ajax()){
+            
+            // for excel
+            if($request->export == 'excel'){
+                foreach ($items as $item) {
+                    $excel[] = [
+                        'ID' => $item->id,
+                        'Inside' => $item->inside_code,
+                        'Email' =>  optional($item->user)->email,
+                        'Từ số' => $item->from_phone,
+                        'Đến số' => $item->to_phone,
+                        'Mã cuộc gọi' => $item->call_id,
+                        'Loại cuộc gọi' => strip_tags($item->type_call),
+                        'Trạng thái' => $item->state,
+                        'Link download ghi âm' => $item->link_download,
+                        'Ngày tạo' => date_ft_full($item->created_at),
+                    ];
+                }
+
+                $excel_name = 'Excel_CallItem_' . $request->user()->id;
+                $data = ExcelSupport::store($excel, $excel_name, false, 'export');
+
+                return response([
+                    'code' => 1,
+                    'link' => url('/') . '/upload/export/' . $excel_name . '.xlsx',
+                    'message' => 'Xuất dữ liệu thành công nhấn vào <a href="/upload/export/' . $excel_name . '.xlsx">tải về</a>',
+                ],200);
+            }
+
+            // for normal
+            return response([
+                'view' => view($this->view.'.partials.table',compact('items'))->render(),
+            ],200);
+
+        } //end $request->ajax()
+
+    	return view($this->view.'index',compact('items'));
     }
 
     public function create()
@@ -138,14 +231,109 @@ class ProductController extends Controller
 
     public function excelUpload(Request $request)
     {
-        $file = $request->file('filename');
-        Product::uploadExcel($file);
-        return redirect()->route('backend.product.index')
-        ->withSuccess('Upload thành công');
+        $this->validate($request, [
+            'fileExcelImport' => 'required|mimes:xls,xlsx|max:5120',
+        ]);
+
+        $file = $request->file('fileExcelImport');
+
+        $path = $this->Product->uploadExcel($file);
+
+        return redirect()->route($this->route.'index')->withSuccess('Import file excel thành công');
+
+        // return response([
+        //     'code' => '200',
+        //     'message' => 'Import file excel thành công',
+        //     'path' => $path,
+        // ], 200);
     }
 
-    public function excelForm()
+    // my filter
+    private function filter($object, $request)
     {
-        return view('backend.product.excelForm');
+        $object = "App\\$object";
+        $class = new $object;
+        $query = $class::query();
+
+        // for search
+        if($request->search){
+            $query->where($request->col,'LIKE', '%'.$request->search.'%');
+        }
+        
+        foreach(array_keys($this->data) as $header){
+            // not time
+            if($request->$header && !isset($this->data[$header]['time'])){
+                if($this->data[$header]['defaul_operator'] == 'LIKE'){
+                    $request->$header = '%'.$request->$header.'%';
+                }
+
+                if($request->$header == -1){
+                    $request->$header = null;
+                }
+
+                $query->where($header, $this->data[$header]['defaul_operator'], $request->$header);
+            }
+
+            // time
+            if($request->$header && isset($this->data[$header]['time'])){
+                if ($request->$header) {
+                    $ngay_tao_range = explode('-', $request->$header);
+                    foreach ($ngay_tao_range as $key => $item) {
+                        $ngay_tao_range[$key] = Carbon::createFromFormat('d/m/Y', trim($item));
+                    }
+                    $query->whereBetween($header, array($ngay_tao_range[0]->setTime(0, 0, 0), $ngay_tao_range[1]->addDay()->setTime(0, 0, 0)));
+                }
+            }
+        }
+
+        // for order by
+        if ($request->orderBy) {
+            // order by something
+        }else{
+            $query->orderBy('created_at','desc');
+        }
+
+        // for export
+        if($request->export == 'excel'){
+            return $query->relationModel()->get();
+        }
+
+        $request->rowPerPage = in_array($request->rowPerPage, [10,20,30,40]) ? $request->rowPerPage : 10;
+
+        // for normal
+        return $query->relationModel()->paginate($request->rowPerPage);
+    }
+
+    private function renderTableHtml($items)
+    {
+        return $items->map(function ($item) {
+            return $this->transformTableHtml($item);
+        });
+    }
+
+    private function transformTableHtml($item)
+    {
+        return 
+        "<tr>".
+        "<td>$item->id</td>".
+        "<td>$item->title</td>".
+        "<td>$item->order</td>".
+        "<td>$item->visibility</td>".
+        "<td>$item->slug</td>".
+        "<td>$item->short_description</td>".
+        "<td>$item->filename</td>".
+        "<td>$item->date_ft_full($item->created_at)</td>".
+        "</tr>"
+        ;
+        // return [
+        //     'id' => $item->id,
+        //     'title' => $item->title,
+        //     'order' => $item->order,
+        //     'visibility' => $item->visibility,
+        //     'slug' => $item->slug,
+        //     'short_description' => $item->short_description,
+        //     'filename' => $item->filename,
+        //     'created_at' => date_ft_full($item->filename),
+        // ];
     }
 }

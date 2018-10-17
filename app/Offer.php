@@ -42,17 +42,30 @@ class Offer extends Model
     protected $appends = ['link'];
 
 	# start relationship
-    # morphTo
-    // For Model Message
-    // public function messagable()
-    // {
-    //     return $this->morphTo();
-    // }
-    // For Model Offer
-    // public function messages()
-    // {
-    //     return $this->morphMany('App\Message', 'messagable');
-    // }
+        # morphTo
+        // For Model Message
+        // public function messagable()
+        // {
+        //     return $this->morphTo();
+        // }
+        // For Model Offer
+        // public function messages()
+        // {
+        //     return $this->morphMany('App\Message', 'messagable');
+        // }
+
+        #start has Many
+        // public function comments()
+        // {
+        //     return $this->hasMany('App\Comment');
+        // }
+
+        // public function post()
+        // {
+        //     return $this->belongsTo('App\Post');
+        // }
+        // return $this->belongsTo('App\Post', 'foreign_key', 'other_key');
+        #end has Many
 
     # end relationship
 

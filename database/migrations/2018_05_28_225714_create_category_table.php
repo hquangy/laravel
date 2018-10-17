@@ -15,6 +15,10 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('is_hot')->nullable()->default(0);
+            $table->boolean('is_index')->nullable()->default(1);
+            $table->boolean('is_trash')->nullable()->default(1);
+
             $table->integer('parent_id')->unsigned()->nullable();
             $table->integer('ancestor_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
@@ -29,19 +33,18 @@ class CreateCategoryTable extends Migration
             $table->string('slug')->nullable();
             $table->string('subtitle')->nullable();
             $table->string('layout')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('facebook_title')->nullable();
 
             $table->text('description')->nullable();
             $table->text('short_description')->nullable();
-            $table->text('content')->nullable();
-            $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
+            $table->text('facebook_description')->nullable();
             $table->text('filename')->nullable();
+            $table->text('mobile_filename')->nullable();
+            $table->text('facebook_filename')->nullable();
 
-            $table->string('face_title')->nullable();
-            $table->text('face_description')->nullable();
-            $table->text('face_image')->nullable();
-
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->index(['id','title','slug']);
             $table->timestamps();
             $table->softDeletes();
