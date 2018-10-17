@@ -696,8 +696,16 @@
       ),
     ),
   ),
+  'trustedproxy' => 
+  array (
+    'proxies' => NULL,
+    'headers' => 30,
+  ),
   'tinker' => 
   array (
+    'commands' => 
+    array (
+    ),
     'dont_alias' => 
     array (
     ),
