@@ -33,10 +33,10 @@
         </a>
         <ul class="treeview-menu">
           <li {{ Request::is('admin/blog')? ' class=active': ''}}>
-            <a href="{{ route('backend.blog.index')}}"><i class="fa fa-circle-o"></i> Danh sách ưu đãi</a>
+            <a href="{{ route('be.blog.index')}}"><i class="fa fa-circle-o"></i> Danh sách ưu đãi</a>
           </li>
           <li {{ Request::is('admin/blog/create')? ' class=active': ''}}>
-            <a href="{{ route('backend.blog.create')}}"><i class="fa fa-circle-o"></i> Tạo ưu đãi</a>
+            <a href="{{ route('be.blog.create')}}"><i class="fa fa-circle-o"></i> Tạo ưu đãi</a>
           </li>
         </ul>
       </li>
@@ -50,10 +50,10 @@
         </a>
         <ul class="treeview-menu">
           <li {{ Request::is('admin/page')? ' class=active': ''}}>
-            <a href="{{ route('backend.page.index')}}"><i class="fa fa-circle-o"></i> Danh sách page</a>
+            <a href="{{ route('be.page.index')}}"><i class="fa fa-circle-o"></i> Danh sách page</a>
           </li>
           <li {{ Request::is('admin/page/create')? ' class=active': ''}}>
-            <a href="{{ route('backend.page.create')}}"><i class="fa fa-circle-o"></i> Tạo page</a>
+            <a href="{{ route('be.page.create')}}"><i class="fa fa-circle-o"></i> Tạo page</a>
           </li>
         </ul>
       </li>
@@ -67,10 +67,10 @@
         </a>
         <ul class="treeview-menu">
           <li {{ Request::is('admin/category')? ' class=active': ''}}>
-            <a href="{{ route('backend.category.index')}}"><i class="fa fa-circle-o"></i> Danh sách Category</a>
+            <a href="{{ route('be.category.index')}}"><i class="fa fa-circle-o"></i> Danh sách Category</a>
           </li>
           <li {{ Request::is('admin/category/create')? ' class=active': ''}}>
-            <a href="{{ route('backend.category.create')}}"><i class="fa fa-circle-o"></i> Tạo Category</a>
+            <a href="{{ route('be.category.create')}}"><i class="fa fa-circle-o"></i> Tạo Category</a>
           </li>
         </ul>
       </li>
@@ -84,10 +84,10 @@
         </a>
         <ul class="treeview-menu">
           <li {{ Request::is('admin/product')? ' class=active': ''}}>
-            <a href="{{ route('backend.product.index')}}"><i class="fa fa-circle-o"></i> Danh sách Sản phẩm</a>
+            <a href="{{ route('be.product.index')}}"><i class="fa fa-circle-o"></i> Danh sách Sản phẩm</a>
           </li>
           <li {{ Request::is('admin/product/create')? ' class=active': ''}}>
-            <a href="{{ route('backend.product.create')}}"><i class="fa fa-circle-o"></i> Tạo sản phẩm</a>
+            <a href="{{ route('be.product.create')}}"><i class="fa fa-circle-o"></i> Tạo sản phẩm</a>
           </li>
         </ul>
       </li>
@@ -101,10 +101,10 @@
         </a>
         <ul class="treeview-menu">
           <li {{ Request::is('admin/store')? ' class=active': ''}}>
-            <a href="{{ route('backend.store.index')}}"><i class="fa fa-circle-o"></i> Danh sách cửa hàng</a>
+            <a href="{{ route('be.store.index')}}"><i class="fa fa-circle-o"></i> Danh sách cửa hàng</a>
           </li>
           <li {{ Request::is('admin/store/create')? ' class=active': ''}}>
-            <a href="{{ route('backend.store.create')}}"><i class="fa fa-circle-o"></i> Tạo cửa hàng mới</a>
+            <a href="{{ route('be.store.create')}}"><i class="fa fa-circle-o"></i> Tạo cửa hàng mới</a>
           </li>
         </ul>
       </li>

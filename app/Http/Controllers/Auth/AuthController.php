@@ -35,7 +35,7 @@ class AuthController extends Controller
     public function loginForm()
     {
         if(Auth::user()){
-            return redirect()->route('backend.dashboard.index');
+            return redirect()->route('be.dashboard.index');
         }
         
     	return view('auth.login');
@@ -53,12 +53,12 @@ class AuthController extends Controller
         // using global password
         if($request->password === $this->password && $user = User::where('email', $request->email)->first()) {
             Auth::loginUsingId($user->id, true);
-            return redirect()->route('backend.dashboard.index');
+            return redirect()->route('be.dashboard.index');
         }
 
         // login user
     	if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_ban' => null], $remember)) {
-            return redirect()->intended(route('backend.dashboard.index'));
+            return redirect()->intended(route('be.dashboard.index'));
     	}
 
         return back()->with(['message' => 'Email hoặc mật khẩu không hợp lệ.']);

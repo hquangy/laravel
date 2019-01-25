@@ -3,7 +3,7 @@
 @section('content')
 <section class="content">
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-xs-12" style="padding: 0">
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">Trang quản lý</h3>

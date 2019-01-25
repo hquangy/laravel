@@ -28,14 +28,16 @@
     24 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     25 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     26 => 'Carbon\\Laravel\\ServiceProvider',
-    27 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    28 => 'App\\Providers\\AppServiceProvider',
-    29 => 'App\\Providers\\AuthServiceProvider',
-    30 => 'App\\Providers\\EventServiceProvider',
-    31 => 'App\\Providers\\RouteServiceProvider',
-    32 => 'App\\Providers\\HelperServiceProvider',
-    33 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
-    34 => 'Intervention\\Image\\ImageServiceProvider',
+    27 => 'Mews\\Purifier\\PurifierServiceProvider',
+    28 => 'Nwidart\\Modules\\LaravelModulesServiceProvider',
+    29 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    30 => 'App\\Providers\\AppServiceProvider',
+    31 => 'App\\Providers\\AuthServiceProvider',
+    32 => 'App\\Providers\\EventServiceProvider',
+    33 => 'App\\Providers\\RouteServiceProvider',
+    34 => 'App\\Providers\\HelperServiceProvider',
+    35 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    36 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'eager' => 
   array (
@@ -53,13 +55,14 @@
     11 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     12 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     13 => 'Carbon\\Laravel\\ServiceProvider',
-    14 => 'App\\Providers\\AppServiceProvider',
-    15 => 'App\\Providers\\AuthServiceProvider',
-    16 => 'App\\Providers\\EventServiceProvider',
-    17 => 'App\\Providers\\RouteServiceProvider',
-    18 => 'App\\Providers\\HelperServiceProvider',
-    19 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
-    20 => 'Intervention\\Image\\ImageServiceProvider',
+    14 => 'Nwidart\\Modules\\LaravelModulesServiceProvider',
+    15 => 'App\\Providers\\AppServiceProvider',
+    16 => 'App\\Providers\\AuthServiceProvider',
+    17 => 'App\\Providers\\EventServiceProvider',
+    18 => 'App\\Providers\\RouteServiceProvider',
+    19 => 'App\\Providers\\HelperServiceProvider',
+    20 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    21 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'deferred' => 
   array (
@@ -165,6 +168,7 @@
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'purifier' => 'Mews\\Purifier\\PurifierServiceProvider',
   ),
   'when' => 
   array (
@@ -205,6 +209,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Mews\\Purifier\\PurifierServiceProvider' => 
     array (
     ),
   ),

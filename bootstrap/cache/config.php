@@ -227,7 +227,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'joinproject',
+        'database' => 'likewatc_data1',
         'prefix' => '',
       ),
       'mysql' => 
@@ -235,7 +235,7 @@
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'joinproject',
+        'database' => 'likewatc_data1',
         'username' => 'root',
         'password' => 'rootpassworddefault',
         'unix_socket' => '',
@@ -250,7 +250,7 @@
         'driver' => 'pgsql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'joinproject',
+        'database' => 'likewatc_data1',
         'username' => 'root',
         'password' => 'rootpassworddefault',
         'charset' => 'utf8',
@@ -263,7 +263,7 @@
         'driver' => 'sqlsrv',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'joinproject',
+        'database' => 'likewatc_data1',
         'username' => 'root',
         'password' => 'rootpassworddefault',
         'charset' => 'utf8',
@@ -282,160 +282,6 @@
         'database' => 0,
       ),
     ),
-  ),
-  'filesystems' => 
-  array (
-    'default' => 'local',
-    'cloud' => 's3',
-    'disks' => 
-    array (
-      'local' => 
-      array (
-        'driver' => 'local',
-        'root' => '/var/www/html/storage/app',
-      ),
-      'public' => 
-      array (
-        'driver' => 'local',
-        'root' => '/var/www/html/storage/app/public',
-        'url' => 'http://localhost/storage',
-        'visibility' => 'public',
-      ),
-      's3' => 
-      array (
-        'driver' => 's3',
-        'key' => NULL,
-        'secret' => NULL,
-        'region' => NULL,
-        'bucket' => NULL,
-      ),
-    ),
-  ),
-  'mail' => 
-  array (
-    'driver' => 'smtp',
-    'host' => 'smtp.gmail.com',
-    'port' => '587',
-    'from' => 
-    array (
-      'address' => 'hello@example.com',
-      'name' => 'Example',
-    ),
-    'encryption' => 'tls',
-    'username' => 'info@comtamcali.com',
-    'password' => 'ngocle@123',
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'markdown' => 
-    array (
-      'theme' => 'default',
-      'paths' => 
-      array (
-        0 => '/var/www/html/resources/views/vendor/mail',
-      ),
-    ),
-  ),
-  'queue' => 
-  array (
-    'default' => 'sync',
-    'connections' => 
-    array (
-      'sync' => 
-      array (
-        'driver' => 'sync',
-      ),
-      'database' => 
-      array (
-        'driver' => 'database',
-        'table' => 'jobs',
-        'queue' => 'default',
-        'retry_after' => 90,
-      ),
-      'beanstalkd' => 
-      array (
-        'driver' => 'beanstalkd',
-        'host' => 'localhost',
-        'queue' => 'default',
-        'retry_after' => 90,
-      ),
-      'sqs' => 
-      array (
-        'driver' => 'sqs',
-        'key' => 'your-public-key',
-        'secret' => 'your-secret-key',
-        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
-        'queue' => 'your-queue-name',
-        'region' => 'us-east-1',
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-        'queue' => 'default',
-        'retry_after' => 90,
-      ),
-    ),
-    'failed' => 
-    array (
-      'database' => 'mysql',
-      'table' => 'failed_jobs',
-    ),
-  ),
-  'services' => 
-  array (
-    'mailgun' => 
-    array (
-      'domain' => NULL,
-      'secret' => NULL,
-    ),
-    'ses' => 
-    array (
-      'key' => NULL,
-      'secret' => NULL,
-      'region' => 'us-east-1',
-    ),
-    'sparkpost' => 
-    array (
-      'secret' => NULL,
-    ),
-    'stripe' => 
-    array (
-      'model' => 'App\\User',
-      'key' => NULL,
-      'secret' => NULL,
-    ),
-  ),
-  'session' => 
-  array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => '/var/www/html/storage/framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'store' => NULL,
-    'lottery' => 
-    array (
-      0 => 2,
-      1 => 100,
-    ),
-    'cookie' => 'laravel_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => false,
-    'http_only' => true,
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => '/var/www/html/resources/views',
-    ),
-    'compiled' => '/var/www/html/storage/framework/views',
-  ),
-  'image' => 
-  array (
-    'driver' => 'gd',
   ),
   'excel' => 
   array (
@@ -696,10 +542,389 @@
       ),
     ),
   ),
+  'filesystems' => 
+  array (
+    'default' => 'local',
+    'cloud' => 's3',
+    'disks' => 
+    array (
+      'local' => 
+      array (
+        'driver' => 'local',
+        'root' => '/var/www/html/storage/app',
+      ),
+      'public' => 
+      array (
+        'driver' => 'local',
+        'root' => '/var/www/html/storage/app/public',
+        'url' => 'http://localhost/storage',
+        'visibility' => 'public',
+      ),
+      's3' => 
+      array (
+        'driver' => 's3',
+        'key' => NULL,
+        'secret' => NULL,
+        'region' => NULL,
+        'bucket' => NULL,
+      ),
+    ),
+  ),
+  'image' => 
+  array (
+    'driver' => 'gd',
+  ),
+  'mail' => 
+  array (
+    'driver' => 'smtp',
+    'host' => 'smtp.gmail.com',
+    'port' => '587',
+    'from' => 
+    array (
+      'address' => 'hello@example.com',
+      'name' => 'Example',
+    ),
+    'encryption' => 'tls',
+    'username' => 'info@comtamcali.com',
+    'password' => 'ngocle@123',
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'markdown' => 
+    array (
+      'theme' => 'default',
+      'paths' => 
+      array (
+        0 => '/var/www/html/resources/views/vendor/mail',
+      ),
+    ),
+  ),
+  'queue' => 
+  array (
+    'default' => 'sync',
+    'connections' => 
+    array (
+      'sync' => 
+      array (
+        'driver' => 'sync',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'jobs',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+      'beanstalkd' => 
+      array (
+        'driver' => 'beanstalkd',
+        'host' => 'localhost',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+      'sqs' => 
+      array (
+        'driver' => 'sqs',
+        'key' => 'your-public-key',
+        'secret' => 'your-secret-key',
+        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
+        'queue' => 'your-queue-name',
+        'region' => 'us-east-1',
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+    ),
+    'failed' => 
+    array (
+      'database' => 'mysql',
+      'table' => 'failed_jobs',
+    ),
+  ),
+  'services' => 
+  array (
+    'mailgun' => 
+    array (
+      'domain' => NULL,
+      'secret' => NULL,
+    ),
+    'ses' => 
+    array (
+      'key' => NULL,
+      'secret' => NULL,
+      'region' => 'us-east-1',
+    ),
+    'sparkpost' => 
+    array (
+      'secret' => NULL,
+    ),
+    'stripe' => 
+    array (
+      'model' => 'App\\User',
+      'key' => NULL,
+      'secret' => NULL,
+    ),
+  ),
+  'session' => 
+  array (
+    'driver' => 'file',
+    'lifetime' => 600,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => '/var/www/html/storage/framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => '/var/www/html/resources/views',
+    ),
+    'compiled' => '/var/www/html/storage/framework/views',
+  ),
   'trustedproxy' => 
   array (
     'proxies' => NULL,
     'headers' => 30,
+  ),
+  'modules' => 
+  array (
+    'namespace' => 'Modules',
+    'stubs' => 
+    array (
+      'enabled' => false,
+      'path' => '/var/www/html/vendor/nwidart/laravel-modules/src/Commands/stubs',
+      'files' => 
+      array (
+        'start' => 'start.php',
+        'routes' => 'Http/routes.php',
+        'views/index' => 'Resources/views/index.blade.php',
+        'views/master' => 'Resources/views/layouts/master.blade.php',
+        'scaffold/config' => 'Config/config.php',
+        'composer' => 'composer.json',
+        'assets/js/app' => 'Resources/assets/js/app.js',
+        'assets/sass/app' => 'Resources/assets/sass/app.scss',
+        'webpack' => 'webpack.mix.js',
+        'package' => 'package.json',
+      ),
+      'replacements' => 
+      array (
+        'start' => 
+        array (
+          0 => 'LOWER_NAME',
+          1 => 'ROUTES_LOCATION',
+        ),
+        'routes' => 
+        array (
+          0 => 'LOWER_NAME',
+          1 => 'STUDLY_NAME',
+          2 => 'MODULE_NAMESPACE',
+        ),
+        'webpack' => 
+        array (
+          0 => 'LOWER_NAME',
+        ),
+        'json' => 
+        array (
+          0 => 'LOWER_NAME',
+          1 => 'STUDLY_NAME',
+          2 => 'MODULE_NAMESPACE',
+        ),
+        'views/index' => 
+        array (
+          0 => 'LOWER_NAME',
+        ),
+        'views/master' => 
+        array (
+          0 => 'LOWER_NAME',
+          1 => 'STUDLY_NAME',
+        ),
+        'scaffold/config' => 
+        array (
+          0 => 'STUDLY_NAME',
+        ),
+        'composer' => 
+        array (
+          0 => 'LOWER_NAME',
+          1 => 'STUDLY_NAME',
+          2 => 'VENDOR',
+          3 => 'AUTHOR_NAME',
+          4 => 'AUTHOR_EMAIL',
+          5 => 'MODULE_NAMESPACE',
+        ),
+      ),
+      'gitkeep' => true,
+    ),
+    'paths' => 
+    array (
+      'modules' => '/var/www/html/Modules',
+      'assets' => '/var/www/html/public/modules',
+      'migration' => '/var/www/html/database/migrations',
+      'generator' => 
+      array (
+        'config' => 
+        array (
+          'path' => 'Config',
+          'generate' => true,
+        ),
+        'command' => 
+        array (
+          'path' => 'Console',
+          'generate' => true,
+        ),
+        'migration' => 
+        array (
+          'path' => 'Database/Migrations',
+          'generate' => true,
+        ),
+        'seeder' => 
+        array (
+          'path' => 'Database/Seeders',
+          'generate' => true,
+        ),
+        'factory' => 
+        array (
+          'path' => 'Database/factories',
+          'generate' => true,
+        ),
+        'model' => 
+        array (
+          'path' => 'Entities',
+          'generate' => true,
+        ),
+        'controller' => 
+        array (
+          'path' => 'Http/Controllers',
+          'generate' => true,
+        ),
+        'filter' => 
+        array (
+          'path' => 'Http/Middleware',
+          'generate' => true,
+        ),
+        'request' => 
+        array (
+          'path' => 'Http/Requests',
+          'generate' => true,
+        ),
+        'provider' => 
+        array (
+          'path' => 'Providers',
+          'generate' => true,
+        ),
+        'assets' => 
+        array (
+          'path' => 'Resources/assets',
+          'generate' => true,
+        ),
+        'lang' => 
+        array (
+          'path' => 'Resources/lang',
+          'generate' => true,
+        ),
+        'views' => 
+        array (
+          'path' => 'Resources/views',
+          'generate' => true,
+        ),
+        'test' => 
+        array (
+          'path' => 'Tests',
+          'generate' => true,
+        ),
+        'repository' => 
+        array (
+          'path' => 'Repositories',
+          'generate' => false,
+        ),
+        'event' => 
+        array (
+          'path' => 'Events',
+          'generate' => false,
+        ),
+        'listener' => 
+        array (
+          'path' => 'Listeners',
+          'generate' => false,
+        ),
+        'policies' => 
+        array (
+          'path' => 'Policies',
+          'generate' => false,
+        ),
+        'rules' => 
+        array (
+          'path' => 'Rules',
+          'generate' => false,
+        ),
+        'jobs' => 
+        array (
+          'path' => 'Jobs',
+          'generate' => false,
+        ),
+        'emails' => 
+        array (
+          'path' => 'Emails',
+          'generate' => false,
+        ),
+        'notifications' => 
+        array (
+          'path' => 'Notifications',
+          'generate' => false,
+        ),
+        'resource' => 
+        array (
+          'path' => 'Transformers',
+          'generate' => false,
+        ),
+      ),
+    ),
+    'scan' => 
+    array (
+      'enabled' => false,
+      'paths' => 
+      array (
+        0 => '/var/www/html/vendor/*/*',
+      ),
+    ),
+    'composer' => 
+    array (
+      'vendor' => 'nwidart',
+      'author' => 
+      array (
+        'name' => 'Nicolas Widart',
+        'email' => 'n.widart@gmail.com',
+      ),
+    ),
+    'cache' => 
+    array (
+      'enabled' => false,
+      'key' => 'laravel-modules',
+      'lifetime' => 60,
+    ),
+    'register' => 
+    array (
+      'translations' => true,
+      'files' => 'register',
+    ),
+  ),
+  'post' => 
+  array (
+    'name' => 'Post',
   ),
   'tinker' => 
   array (
@@ -708,6 +933,271 @@
     ),
     'dont_alias' => 
     array (
+    ),
+  ),
+  'purifier' => 
+  array (
+    'encoding' => 'UTF-8',
+    'finalize' => true,
+    'cachePath' => '/var/www/html/storage/app/purifier',
+    'cacheFileMode' => 493,
+    'settings' => 
+    array (
+      'default' => 
+      array (
+        'HTML.Doctype' => 'HTML 4.01 Transitional',
+        'HTML.Allowed' => 'div,b,strong,i,em,u,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src]',
+        'CSS.AllowedProperties' => 'font,font-size,font-weight,font-style,font-family,text-decoration,padding-left,color,background-color,text-align',
+        'AutoFormat.AutoParagraph' => true,
+        'AutoFormat.RemoveEmpty' => true,
+      ),
+      'test' => 
+      array (
+        'Attr.EnableID' => 'true',
+      ),
+      'youtube' => 
+      array (
+        'HTML.SafeIframe' => 'true',
+        'URI.SafeIframeRegexp' => '%^(http://|https://|//)(www.youtube.com/embed/|player.vimeo.com/video/)%',
+      ),
+      'custom_definition' => 
+      array (
+        'id' => 'html5-definitions',
+        'rev' => 1,
+        'debug' => false,
+        'elements' => 
+        array (
+          0 => 
+          array (
+            0 => 'section',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          1 => 
+          array (
+            0 => 'nav',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          2 => 
+          array (
+            0 => 'article',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          3 => 
+          array (
+            0 => 'aside',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          4 => 
+          array (
+            0 => 'header',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          5 => 
+          array (
+            0 => 'footer',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          6 => 
+          array (
+            0 => 'address',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          7 => 
+          array (
+            0 => 'hgroup',
+            1 => 'Block',
+            2 => 'Required: h1 | h2 | h3 | h4 | h5 | h6',
+            3 => 'Common',
+          ),
+          8 => 
+          array (
+            0 => 'figure',
+            1 => 'Block',
+            2 => 'Optional: (figcaption, Flow) | (Flow, figcaption) | Flow',
+            3 => 'Common',
+          ),
+          9 => 
+          array (
+            0 => 'figcaption',
+            1 => 'Inline',
+            2 => 'Flow',
+            3 => 'Common',
+          ),
+          10 => 
+          array (
+            0 => 'video',
+            1 => 'Block',
+            2 => 'Optional: (source, Flow) | (Flow, source) | Flow',
+            3 => 'Common',
+            4 => 
+            array (
+              'src' => 'URI',
+              'type' => 'Text',
+              'width' => 'Length',
+              'height' => 'Length',
+              'poster' => 'URI',
+              'preload' => 'Enum#auto,metadata,none',
+              'controls' => 'Bool',
+            ),
+          ),
+          11 => 
+          array (
+            0 => 'source',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+            4 => 
+            array (
+              'src' => 'URI',
+              'type' => 'Text',
+            ),
+          ),
+          12 => 
+          array (
+            0 => 's',
+            1 => 'Inline',
+            2 => 'Inline',
+            3 => 'Common',
+          ),
+          13 => 
+          array (
+            0 => 'var',
+            1 => 'Inline',
+            2 => 'Inline',
+            3 => 'Common',
+          ),
+          14 => 
+          array (
+            0 => 'sub',
+            1 => 'Inline',
+            2 => 'Inline',
+            3 => 'Common',
+          ),
+          15 => 
+          array (
+            0 => 'sup',
+            1 => 'Inline',
+            2 => 'Inline',
+            3 => 'Common',
+          ),
+          16 => 
+          array (
+            0 => 'mark',
+            1 => 'Inline',
+            2 => 'Inline',
+            3 => 'Common',
+          ),
+          17 => 
+          array (
+            0 => 'wbr',
+            1 => 'Inline',
+            2 => 'Empty',
+            3 => 'Core',
+          ),
+          18 => 
+          array (
+            0 => 'ins',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+            4 => 
+            array (
+              'cite' => 'URI',
+              'datetime' => 'CDATA',
+            ),
+          ),
+          19 => 
+          array (
+            0 => 'del',
+            1 => 'Block',
+            2 => 'Flow',
+            3 => 'Common',
+            4 => 
+            array (
+              'cite' => 'URI',
+              'datetime' => 'CDATA',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          0 => 
+          array (
+            0 => 'iframe',
+            1 => 'allowfullscreen',
+            2 => 'Bool',
+          ),
+          1 => 
+          array (
+            0 => 'table',
+            1 => 'height',
+            2 => 'Text',
+          ),
+          2 => 
+          array (
+            0 => 'td',
+            1 => 'border',
+            2 => 'Text',
+          ),
+          3 => 
+          array (
+            0 => 'th',
+            1 => 'border',
+            2 => 'Text',
+          ),
+          4 => 
+          array (
+            0 => 'tr',
+            1 => 'width',
+            2 => 'Text',
+          ),
+          5 => 
+          array (
+            0 => 'tr',
+            1 => 'height',
+            2 => 'Text',
+          ),
+          6 => 
+          array (
+            0 => 'tr',
+            1 => 'border',
+            2 => 'Text',
+          ),
+        ),
+      ),
+      'custom_attributes' => 
+      array (
+        0 => 
+        array (
+          0 => 'a',
+          1 => 'target',
+          2 => 'Enum#_blank,_self,_target,_top',
+        ),
+      ),
+      'custom_elements' => 
+      array (
+        0 => 
+        array (
+          0 => 'u',
+          1 => 'Inline',
+          2 => 'Inline',
+          3 => 'Common',
+        ),
+      ),
     ),
   ),
 );

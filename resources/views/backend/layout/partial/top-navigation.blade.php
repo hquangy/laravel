@@ -1,6 +1,6 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="{{ route('backend.dashboard.index') }}" class="logo">
+  <a href="{{ route('be.dashboard.index') }}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>B</b>E</span>
     <!-- logo for regular state and mobile devices -->
