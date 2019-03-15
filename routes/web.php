@@ -15,6 +15,9 @@ Route::group([
 	// 'middleware' => ['auth'], 
 ], function () {
 	Route::get('excelGoogleMerchant', 'ExcelController@excelGoogleMerchant');
+	Route::get('excelFace', 'ExcelController@excelFace');
+
+	Route::get('getPage', 'CurlController@getPage');
 });
 
 // # Frontend

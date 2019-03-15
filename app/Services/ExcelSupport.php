@@ -57,7 +57,7 @@ class ExcelSupport
 	/*
 		export data to xlsx and save it on server
 	*/
-	public static function store($data, $excel_name = null, $uniqid = false, $folder_name = null)
+	public static function store($data, $excel_name = null, $uniqid = false, $folder_name = null, $type = 'xlsx')
 	{
         // Make foler contain export
         if (! file_exists(public_path('upload/'.$folder_name))) {
@@ -81,7 +81,7 @@ class ExcelSupport
 			});
 
 		})
-		->store('xlsx', public_path('upload/'.$folder_name));
+		->store($type, public_path('upload/'.$folder_name));
 
 		return public_path('upload/'.$folder_name.'/'.$excel_name.'.xlsx');
 	}

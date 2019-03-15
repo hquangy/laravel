@@ -112,3 +112,9 @@ function word_limit_striptag($string, $length = 10, $extension = '...')
 {
     return Str::words(strip_tags($string, '<p></p>'), $length, $extension);
 }
+
+function eclean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+}

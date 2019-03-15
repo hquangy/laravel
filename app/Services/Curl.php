@@ -3,7 +3,7 @@ namespace App\Services;
 
 class Curl
 {
-	public static function send($url, $method = 'GET', $data = null, $retry = 2)
+	public function send($url, $method = 'GET', $data = null, $retry = 2)
 	{
 	    $retrytime = 0;
 	    retry_from_here:
