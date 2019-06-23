@@ -16,6 +16,10 @@ Route::group([
 ], function () {
 	Route::get('excelGoogleMerchant', 'ExcelController@excelGoogleMerchant');
 	Route::get('excelFace', 'ExcelController@excelFace');
+	Route::get('excelTissot', 'ExcelController@excelTissot');
+	Route::get('excelByCategory', 'ExcelController@excelByCategory');
+	Route::get('excelByCategoryQT', 'ExcelController@excelByCategoryQT');
+	Route::get('excelStatus', 'ExcelController@excelStatus');
 
 	Route::get('getPage', 'CurlController@getPage');
 });

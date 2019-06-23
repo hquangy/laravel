@@ -8,7 +8,7 @@ class ProductWatch extends Model
 {
     protected $table = 'cms_tproducts';
 
-    protected $appends = ['description_ex', 'link', 'pri_img', 'sec_img' ,'type', 'color', 'price', 'price_off', 'num_inventory', 'store_status', 'gender'];
+    protected $appends = ['description_ex', 'link', 'pri_img', 'sec_img' ,'type', 'color', 'price', 'price_off', 'num_inventory', 'store_status', 'gender','bo_suu_tap','ton'];
 
     public function getTypeAttribute()
     {
@@ -21,6 +21,13 @@ class ProductWatch extends Model
     public function getNumInventoryAttribute()
     {
         $inventories = $this->inventories;
+        return count($inventories);
+    }
+
+    public function getTonAttribute()
+    {
+        $inventories = $this->inventories;
+        $inventories = $inventories->where('cstatus', 1)->all();
         return count($inventories);
     }
 
@@ -50,6 +57,15 @@ class ProductWatch extends Model
 
         $color = $descriptions->where('nid_method', 24)->first();
         if($color) return $color->value;
+        return null;
+    }
+
+    public function getBoSuuTapAttribute()
+    {
+        $descriptions = $this->descriptions;
+
+        $collection = $descriptions->where('nid_method', 2)->first();
+        if($collection) return $collection->value;
         return null;
     }
 
